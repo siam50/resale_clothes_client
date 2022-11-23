@@ -15,13 +15,15 @@ const Categories = () => {
             <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-5 my-5'>
                 {
                     categories.map(category => <div key={category.id} className="card w-96 bg-neutral text-neutral-content">
-                        <div className="card-body items-center text-center">
-                            <h2 className="card-title  text-warning">{category.name}</h2>
-                            <p>{category.tag}</p>
+                        <Link to={`/category/${category.id}`}>
+                            <div className="card-body items-center text-center">
+                                <h2 className="card-title  text-warning">{category.name}</h2>
+                                {/* <p>{category.tag}</p>
                             <div className="card-actions justify-end">
                                 <Link to={`/category/${category.id}`}><button className="btn btn-primary">See Products</button></Link>
+                            </div> */}
                             </div>
-                        </div>
+                        </Link>
                     </div>)
                 }
             </div>
