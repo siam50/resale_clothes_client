@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
     const menuItems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
@@ -12,9 +18,12 @@ const Navbar = () => {
         <>
             {
                 user?.email ?
-                    <li><button className='btn btn-warning'>Logout</button></li>
+                    <>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><button onClick={handleLogOut} className='btn btn-warning'>Logout</button></li>
+                    </>
                     :
-                    <li><button className='btn btn-primary'>Login</button></li>
+                    <li><Link to='/login'><button className='btn btn-primary'>Login</button></Link></li>
             }
         </>
     </React.Fragment>
@@ -37,6 +46,9 @@ const Navbar = () => {
                     {menuItems}
                 </ul>
             </div>
+            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            </label>
         </div>
     );
 };
