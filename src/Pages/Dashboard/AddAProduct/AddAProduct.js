@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddAProduct = () => {
@@ -43,10 +44,20 @@ const AddAProduct = () => {
                         parchageYear: data.parchageYear,
                         condition: data.condition,
                         postDate: date
-
-
-
                     }
+
+                    fetch('http://localhost:5000/products', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(product)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            console.log(result);
+                            toast.success(`Product added successfully`);
+                        })
                 }
             })
     }
@@ -111,13 +122,7 @@ const AddAProduct = () => {
                     </div>
                 </div>
                 <input className='btn btn-accent w-full' value="Add Product" type="submit" />
-                <div>
-                    {/* {loginError && <p className='text-red-600'>{loginError}</p>} */}
-                </div>
             </form>
-            {/* <p>New to Resale Clothes? <Link className='text-secondary' to='/signup'>Create new account</Link></p>
-                <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button> */}
         </div>
     );
 };
