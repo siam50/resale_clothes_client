@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Signup = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { createUser } = useContext(AuthContext);
+    const [signUpError, setSignUpError] = useState('');
+
 
     const handleSignup = data => {
+        setSignUpError('');
         console.log(data)
-    }
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user
+                console.log(user)
+            })
+            .catch(error => setSignUpError(error.message))
+    };
+
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
@@ -39,7 +51,7 @@ const Signup = () => {
                     </div>
                     <input className='btn btn-accent w-full' value="Sign up" type="submit" />
                     <div>
-                        {/* {loginError && <p className='text-red-600'>{loginError}</p>} */}
+                        {signUpError && <p className='text-red-600'>{signUpError}</p>}
                     </div>
                 </form>
                 <p>Have an account? <Link className='text-secondary' to='/login'>Login</Link></p>
