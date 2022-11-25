@@ -37,6 +37,7 @@ const AddAProduct = () => {
                         email: user.email,
                         sellerName: user.displayName,
                         image: imgData.data.url,
+                        description: data.description,
                         phone: data.phone,
                         location: data.location,
                         resalePrice: data.resalePrice,
@@ -114,11 +115,17 @@ const AddAProduct = () => {
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Category</span></label>
                         <select {...register("category")} className="select input-bordered w-full max-w-xs">
+                            <option disabled selected>Select Category</option>
                             {
                                 categories.map(category => <option key={category._id} value={category._id}>{category.name}</option>)
                             }
 
                         </select>
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"><span className="label-text">Description</span></label>
+                        <textarea {...register("description", { required: "description is required" })} className="textarea textarea-bordered"></textarea>
+                        {errors.description && <p className='text-red-600'>{errors.description?.message}</p>}
                     </div>
                 </div>
                 <input className='btn btn-accent w-full' value="Add Product" type="submit" />
