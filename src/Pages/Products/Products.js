@@ -5,7 +5,7 @@ import ProductCard from './ProductCard';
 
 const Products = () => {
     const products = useLoaderData();
-    const [bookingProduct, setBookingProduct] = useState({});
+    const [bookingProduct, setBookingProduct] = useState(null);
     return (
         <div>
             <h3 className='text-4xl text-center'>Products {products.length}</h3>
@@ -14,7 +14,10 @@ const Products = () => {
                     products.map(product => <ProductCard key={product._id} product={product} setBookingProduct={setBookingProduct}></ProductCard>)
                 }
             </div>
-            <BookingModal bookingProduct={bookingProduct}></BookingModal>
+            {
+                bookingProduct &&
+                <BookingModal bookingProduct={bookingProduct} setBookingProduct={setBookingProduct}></BookingModal>
+            }
         </div>
     );
 };
