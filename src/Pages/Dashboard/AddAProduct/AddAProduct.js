@@ -125,7 +125,7 @@ const AddAProduct = () => {
 
                         </select>
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full max-w-xs mb-5">
                         <label className="label"><span className="label-text">Description</span></label>
                         <textarea {...register("description", { required: "description is required" })} className="textarea textarea-bordered"></textarea>
                         {errors.description && <p className='text-red-600'>{errors.description?.message}</p>}

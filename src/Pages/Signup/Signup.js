@@ -84,8 +84,6 @@ const Signup = () => {
                     </div>
                 </form>
                 <p>Have an account? <Link className='text-secondary' to='/login'>Login</Link></p>
-                <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

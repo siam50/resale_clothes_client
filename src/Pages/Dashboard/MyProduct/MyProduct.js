@@ -32,17 +32,17 @@ const MyProduct = () => {
 
     return (
         <div>
-            <h3>My product page{myProducts.length}</h3>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-3'>
+            <h3 className='text-3xl font-semibold text-center'>My product page</h3>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-3 my-7'>
                 {
                     myProducts.map(product => <div key={product._id} className="card bg-base-100 shadow-xl">
-                        <figure><img src={product.image} alt="Shoes" /></figure>
+                        <figure><img className=' h-72' src={product.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{product.productName}</h2>
                             <p>Price:${product.resalePrice}</p>
                             <p>Status: Availabe</p>
                             <div className="card-actions justify-end">
-                                <button onClick={() => handleDelete(product)} className="btn btn-primary">delete</button>
+                                <button onClick={() => handleDelete(product)} className="btn btn-error btn-sm">delete</button>
                             </div>
                         </div>
                     </div>)

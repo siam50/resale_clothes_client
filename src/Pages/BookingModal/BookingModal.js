@@ -65,9 +65,9 @@ const BookingModal = ({ bookingProduct, setBookingProduct }) => {
                         <p>Price</p>
                         <input name='price' type="text" defaultValue={resalePrice} readOnly className="input input-bordered w-full" />
                         <p>phone</p>
-                        <input name='phone' type="text" placeholder="phone number" className="input input-bordered w-full" />
+                        <input name='phone' type="text" placeholder="phone number" required className="input input-bordered w-full" />
                         <p>meeting location</p>
-                        <input name='location' type="text" placeholder="meeting location" className="input input-bordered w-full" />
+                        <input name='location' type="text" placeholder="meeting location" required className="input input-bordered w-full" />
                         <br />
                         <input className='btn btn-primary w-full' type="submit" value="Submit" />
                     </form>

@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { login } = useContext(AuthContext);
+    const { login, socialLogin } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -24,7 +24,37 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => setLoginError(error.message))
-    }
+    };
+
+    const handleGoogle = () => {
+        socialLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                saveUser(user.displayName, user.email)
+            })
+            .catch(err => console.log(err))
+    };
+
+    const saveUser = (name, email) => {
+        const user = { name, email, role: 'buyer' }
+        fetch(`http://localhost:5000/users`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    navigate(from, { replace: true });
+                }
+
+            })
+    };
+
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
@@ -49,7 +79,7 @@ const Login = () => {
                 </form>
                 <p>New to Resale Clothes? <Link className='text-secondary' to='/signup'>Create new account</Link></p>
                 <div className="divider">OR</div>
-                <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogle} className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );
