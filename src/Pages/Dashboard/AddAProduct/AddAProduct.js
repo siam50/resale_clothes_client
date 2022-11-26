@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const AddAProduct = () => {
@@ -10,6 +11,7 @@ const AddAProduct = () => {
     const [date, setDate] = useState(new Date());
 
     const imageHostKey = process.env.REACT_APP_imgbb_key
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('http://localhost:5000/categories')
@@ -58,6 +60,7 @@ const AddAProduct = () => {
                         .then(result => {
                             console.log(result);
                             toast.success(`Product added successfully`);
+                            navigate('/dashboard/myproducts')
                         })
                 }
             })
