@@ -13,5 +13,5 @@ https://resale-clothes.web.app/
 
 ## Special Feature
 
-adminEmail:siam@gmail.com
-adminPassword:123456
+# adminEmail:siam@gmail.com
+# adminPassword:123456
