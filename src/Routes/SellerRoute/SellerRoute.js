@@ -9,7 +9,7 @@ const SellerRoute = ({ children }) => {
     const location = useLocation();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/seller/${user?.email}`)
+        fetch(`https://resale-clothes-server.vercel.app/users/seller/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsSeller(data.isSeller)

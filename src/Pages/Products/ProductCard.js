@@ -5,21 +5,22 @@ const ProductCard = ({ product, setBookingProduct }) => {
 
     return (
         <div className="card w-96 bg-base-100 shadow-xl my-7">
-            <figure><img src={image} alt="/" /></figure>
+            <figure><img className='h-72' src={image} alt="/" /></figure>
             <div className="card-body">
                 <h2 className="card-title text-primary">{productName}</h2>
+                <p>Seller Name: <strong>{sellerName}</strong></p>
                 <div className='grid grid-cols-2 gap-3'>
-                    <p>buying Price: ${originalPrice}</p>
-                    <p>selling Price: ${resalePrice}</p>
-                    <p>condition: {condition}</p>
-                    <p>seller name: {sellerName}</p>
-                    <p>location: {location}</p>
-                    <p>phone: {phone}</p>
-                    <p>Buying Year: {parchageYear}</p>
+                    <p>Buying Price: <strong>${originalPrice}</strong></p>
+                    <p>Selling Price: <strong>${resalePrice}</strong></p>
+                    <p>Condition: <strong>{condition}</strong></p>
+                    <p>Location: <strong>{location}</strong></p>
+                    <p>Phone: <strong>{phone}</strong></p>
+                    <p>Buying Year: <strong>{parchageYear}</strong></p>
                 </div>
-                <p>description: {description}</p>
-                <p>post Date: {postDate}</p>
-                <div className="card-actions justify-end">
+                <p>Description: {description}</p>
+                <p>Post Date: {postDate}</p>
+                <div className="card-actions flex justify-between items-center mt-3">
+                    <button className='btn btn-sm btn-warning'>Report to Admin</button>
                     <label onClick={() => setBookingProduct(product)} htmlFor="booking-modal" className="btn btn-primary">book now</label>
                 </div>
             </div>

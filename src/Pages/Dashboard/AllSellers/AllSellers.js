@@ -5,7 +5,7 @@ const AllSellers = () => {
     const [sellers, setSellers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users/sellers')
+        fetch('https://resale-clothes-server.vercel.app/users/sellers')
             .then(res => res.json())
             .then(data => {
                 setSellers(data)
@@ -13,7 +13,7 @@ const AllSellers = () => {
     }, [sellers]);
 
     const handleDelete = seller => {
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://resale-clothes-server.vercel.app/users/${seller._id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

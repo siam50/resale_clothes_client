@@ -32,7 +32,7 @@ const Signup = () => {
 
     const saveUser = (name, email, role) => {
         const user = { name, email, role }
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://resale-clothes-server.vercel.app/users`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -72,11 +72,10 @@ const Signup = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">As a</span></label>
-                        <select {...register("role")} className="select select-bordered w-full max-w-xs">
+                        <select {...register("role")} className="select select-bordered w-full max-w-xs mb-5">
                             <option >buyer</option>
                             <option>seller</option>
                         </select>
-                        <label className="label"></label>
                     </div>
                     <input className='btn btn-accent w-full' value="Sign up" type="submit" />
                     <div>

@@ -9,7 +9,7 @@ const AdminRoute = ({ children }) => {
     const location = useLocation();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/admin/${user?.email}`)
+        fetch(`https://resale-clothes-server.vercel.app/users/admin/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsAdmin(data.isAdmin)

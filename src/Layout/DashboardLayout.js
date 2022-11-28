@@ -9,7 +9,7 @@ const DashboardLayout = () => {
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/seller/${user.email}`)
+        fetch(`https://resale-clothes-server.vercel.app/users/seller/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsSeller(data.isSeller)
@@ -17,7 +17,7 @@ const DashboardLayout = () => {
     }, [user.email]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/admin/${user.email}`)
+        fetch(`https://resale-clothes-server.vercel.app/users/admin/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setIsAdmin(data.isAdmin)
@@ -34,7 +34,7 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 text-base-content">
+                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
                         <>
                             {
                                 !isAdmin &&
@@ -56,11 +56,11 @@ const DashboardLayout = () => {
                                 <>
                                     <li><Link to='/dashboard/allbuyers'>All Buyers</Link></li>
                                     <li><Link to='/dashboard/allsellers'>All Sellers</Link></li>
+                                    <li><Link to='/dashboard/reporteditems'>Reported Items</Link></li>
                                 </>
                             }
                         </>
                     </ul>
-
                 </div>
             </div>
         </div>

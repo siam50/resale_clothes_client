@@ -14,7 +14,7 @@ const AddAProduct = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://resale-clothes-server.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
@@ -49,7 +49,7 @@ const AddAProduct = () => {
                         postDate: date
                     }
 
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://resale-clothes-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -108,7 +108,7 @@ const AddAProduct = () => {
                     </div>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Condition</span></label>
-                        <select {...register("condition", { required: "Photo is required" })} className="select select-bordered w-full max-w-xs">
+                        <select {...register("condition", { required: "Condition is required" })} className="select select-bordered w-full max-w-xs">
                             <option >excilent</option>
                             <option>Good</option>
                             <option>fair</option>

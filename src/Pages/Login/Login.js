@@ -38,7 +38,7 @@ const Login = () => {
 
     const saveUser = (name, email) => {
         const user = { name, email, role: 'buyer' }
-        fetch(`http://localhost:5000/users`, {
+        fetch(`https://resale-clothes-server.vercel.app/users`, {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -65,12 +65,10 @@ const Login = () => {
                         <input type="email" {...register("email", { required: "Email Address is required" })} className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
-                    <div className="form-control w-full max-w-xs">
+                    <div className="form-control w-full max-w-xs mb-5">
                         <label className="label"><span className="label-text">Password</span></label>
                         <input type="password" {...register("password", { required: "Password is Required", minLength: { value: 6, message: "Password should be 6 or more" } })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
-
-                        <label className="label"><span className="label-text">Forgot Password ?</span></label>
                     </div>
                     <input className='btn btn-accent w-full' value="Login" type="submit" />
                     <div>
